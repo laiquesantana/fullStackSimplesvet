@@ -9,12 +9,17 @@
   },
   "dependencies": {
     "admin-lte": "^3.0.0-alpha.2",
+    "font-awesome":"4.7.0",
+    "vue-mq":"1.0.1",
     "moment": "^2.23.0",
     "sweetalert2": "^7.33.1",
     "vue": "^2.6.6",
     "vue-progressbar": "^0.7.5",
     "vue-resource": "^1.5.1",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vuex": "3.1.0",
+    "vue-toasted":"1.1.26",
+    "liquor-tree": "0.2.53"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",

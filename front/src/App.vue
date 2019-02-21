@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-       <router-link :to="{name: 'pet'}" >Catálogo</router-link>
-     		<Cabecalho></Cabecalho>
+  
+     		<Cabecalho title= "Catálogo de Animais" :hideToggle="false"></Cabecalho>
             <Main></Main>  
        		<Conteudo></Conteudo>
    		    <Rodape></Rodape>
