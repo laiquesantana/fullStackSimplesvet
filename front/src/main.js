@@ -34,7 +34,12 @@ var router = new VueRouter({
 })
 
 
-Vue.component('rodape', require('./components/Rodape.vue').default);
+Vue.component('Rodape', require('./components/Rodape.vue').default);
+
+Vue.component('Cabecalho', require('./components/Header.vue').default);
+Vue.component('Main', require('./components/Menu.vue').default);
+Vue.component('Conteudo', require('./components/Content.vue').default);
+
 
 
 Vue.filter('upText',function(text){
@@ -51,9 +56,16 @@ Vue.filter('sexo',function(text){
   return text =="M"? " Masculino" :"Femenino" ;
 });
 
+Vue.filter('dataNull',function(text){
+
+  return text ==null ?" Não Informado" :text ;
+});
 
 Vue.filter('myDate',function(created){
   moment.locale('pt-BR');
+  if (created == null){
+    return 'Não Informado';
+  }
   return moment(created).format('LL');
 });
 

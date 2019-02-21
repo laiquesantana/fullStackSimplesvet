@@ -1,43 +1,19 @@
 <template>
   <div id="app">
-      <router-link :to="{name: 'pet'}" >Catálogo</router-link>
-     	{{  titulo  }}
+       <router-link :to="{name: 'pet'}" >Catálogo</router-link>
+     		<Cabecalho></Cabecalho>
+            <Main></Main>  
+       		<Conteudo></Conteudo>
+   		    <Rodape></Rodape>
 
-           <div class="card-body table-responsive p-0">
-            <table class="table table-hover">
-              <tbody>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Raca</th>
-                  <th>Chip</th>
-                  <th>Data de Nascimento</th>
-                  <th>Data de Atualização</th>
-                  <th>Data de Falecimento</th>
-                  <th>Sexo</th>
-                  <th>Especie</th>
-                </tr>
-                <tr v-for="user in users" :key="user.id">
-                  <td>{{user.id}}</td>
-                  <td>{{user.nome | upText}}</td>
-                  <td>{{user.raca_id}}</td>
-                  <td>{{user.chip}}</td>
-                  <td>{{user.data_nascimento| myDate}}</td>
-                  <td>{{user.data_atualizacao| myDate}}</td>
-                  <td>{{user.data_falecimento | myDate}}</td>
-                  <td>{{user.sexo | sexo}}</td>
-                  <td>{{user.especie| especie}}</td>
-              
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      <router-view></router-view>
+               
   </div>
 </template>
 
 <script>
 import axios from "axios"
+
+
 
 export default {
     name: 'app',
@@ -75,6 +51,7 @@ export default {
 	}
 	body {
 		margin: 0;
+        
 	}
 	#app {
 		-webkit-font-smoothing: antialiased;
