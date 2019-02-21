@@ -3,6 +3,7 @@ require('./bootstrap');
 import 'font-awesome/css/font-awesome.css'
 import Vue from 'vue'
 import App from './App.vue'
+import store from './config/store'
 import vueResource from 'vue-resource'
 
 Vue.config.productionTip = false
@@ -73,6 +74,7 @@ Vue.filter('myDate',function(created){
 Vue.config.devtools = true
 new Vue({
   router,
+  store,
   render: h => h(App),
   
 }).$mount('#app')
