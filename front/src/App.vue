@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
+<div id="app" :class="{'hide-menu': !isMenuVisible }">
   
-     		<Cabecalho title= "Catálogo de Animais" :hideToggle="false"></Cabecalho>
-            <Main></Main>  
-       		<Conteudo></Conteudo>
-   		    <Rodape></Rodape>
+    <Cabecalho title= "Catálogo de Animais" :hideToggle="false"></Cabecalho>
+    <Main></Main>  
+    <Conteudo></Conteudo>
+    <Rodape></Rodape>
 
                
   </div>
@@ -13,16 +13,18 @@
 <script>
 import axios from "axios"
 
-
+import {mapState} from 'vuex'
 
 export default {
     name: 'app',
 
-      created() {
+    created() {
         
         this.getAnimais();
 
     },
+
+     computed: mapState(['isMenuVisible']),
 
     data() {
       
