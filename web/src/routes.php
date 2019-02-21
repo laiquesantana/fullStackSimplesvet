@@ -5,6 +5,15 @@ use Illuminate\Database\Capsule\Manager as Db;
 // Routes
 
 
+$app->get('/', function (Request $request, Response $response) {
+
+    $data = [
+        'app' => 'SimpleVet'
+    ];
+
+    return $response->withJson($data, 200);
+});
+
 $app->get('/listar', function (Request $request, Response $response, array $args) {
 
     $pet =Animal::all();
