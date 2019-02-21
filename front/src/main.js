@@ -40,6 +40,7 @@ Vue.component('Rodape', require('./components/Rodape.vue').default);
 Vue.component('Cabecalho', require('./components/Header.vue').default);
 Vue.component('Main', require('./components/Menu.vue').default);
 Vue.component('Conteudo', require('./components/Content.vue').default);
+Vue.component('UserDropDown', require('./components/UserDropDown.vue').default);
 
 
 
