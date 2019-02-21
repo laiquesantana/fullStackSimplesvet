@@ -1,9 +1,9 @@
 <?php
 return [
     'settings' => [
-        // Slim Settings
-        'determineRouteBeforeAppMiddleware' => true,
-        'displayErrorDetails' => true,
+        'displayErrorDetails' => true, // set to false in production
+        'addContentLengthHeader' => false, // Allow the web server to send the content-length header
+        // Database connection settings
         'db' => [
             'driver' => 'mysql',
             'host' => 'localhost',

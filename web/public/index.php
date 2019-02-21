@@ -2,12 +2,16 @@
 
 require '../vendor/autoload.php';
 
-$settings['displayErrorDetails'] = true;
-$settings['determineRouteBeforeAppMiddleware'] = true;
+session_start();
 
-$app = new \Slim\App(["settings" => $settings]);
+$settings = require __DIR__ . '/../src/settings.php';
+$app = new \Slim\App($settings);
 
-require '../config.php';
-require '../endpoints/app.php';
+require __DIR__ . '/../src/dependencies.php';
+require __DIR__ . '/../src/routes.php';
+
+//require '../endpoints/app.php';
+
+$app->getContainer()->get("db");
 
 $app->run();
