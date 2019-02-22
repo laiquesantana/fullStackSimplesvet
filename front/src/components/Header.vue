@@ -5,15 +5,15 @@
         </a>
 
         <h1 class="title">
-            <router-link to="/home">{{title}}</router-link>
+            {{title}}
         </h1>
         <UserDropDown v-if="!hideUserDropDown"/>
     </header>
 </template>
 
 <script>
-import UserDropDown from './UserDropDown.vue'
 
+import UserDropDown from './UserDropDown'
 export default {
     name: 'Header',
     component:{UserDropDown},

@@ -3,6 +3,7 @@ import 'font-awesome/css/font-awesome.css'
 import Vue from 'vue'
 import App from './App.vue'
 import store from './config/store'
+import './mensagens'
 import vueResource from 'vue-resource'
 import './config/bootstrap'
 import VueProgressBar from 'vue-progressbar'
@@ -16,14 +17,6 @@ import VueRouter from 'vue-router'
 import Swal from 'sweetalert2'
 window.Swal = Swal;
 
-const toast = Swal.mixin({
-    toast: true,
-    position: 'top-left',
-    showConfirmButton: false,
-    timer: 3000
-  });
-  
-window.toast = toast;
 
 Vue.use(VueRouter)
 Vue.use(vueResource)

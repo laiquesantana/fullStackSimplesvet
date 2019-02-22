@@ -4,11 +4,11 @@
       <i :class="icon" :style="style"></i>
     </div>
     <div class="stat-info">
-      <span class="stat-title">Nome: {{ title }}</span>
-      <span class="stat-value">{{ value }}</span>
-      <span class="stat-title">Sexo: {{ sexo }}</span>
+      <span class="stat-title"> {{ title }}</span>
+     <span class="stat-value">{{ value }}</span>
+        <!--<span class="stat-title">Sexo: {{ sexo }}</span>
       <span class="stat-title">Idade: {{ idade }}</span>
-      <span class="stat-title">Nº Chip: {{ chip }}</span>
+    <span class="stat-title">Nº Chip: {{ chip }}</span>  --> 
     </div>
   </div>
 </template>

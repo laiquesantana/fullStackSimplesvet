@@ -8,7 +8,7 @@
             <i class="fa fa-angle-down"></i>
         </div>
         <div class="user-dropdown-content">
-            <router-link to="/animais" >
+            <router-link to="/admin" >
                 <i class="fa fa-cogs"></i> Administração
             </router-link>
             <router-link to="/not-found" >
