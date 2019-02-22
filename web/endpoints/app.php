@@ -28,6 +28,20 @@ $app->get('/animais/listar', function (Request $request, Response $response, arr
 });
 
 
+$app->get('/raca/listar', function (Request $request, Response $response, array $args) {
+
+    $pet = DB::table('racas')->get();
+    return json_encode($pet);
+
+    $pet =Animal::all();
+   
+    return $response->withJson($pet, 200)->withHeader('Access-Control-Allow-Origin', '*');
+    //return $this->renderer->render($response, 'index.phtml',  array("pet" => $pet));
+
+
+});
+
+
 $app->get('/animais/stat', function (Request $request, Response $response, array $args) {
 
     $cout = DB::table('listar')->get()->count();
@@ -45,10 +59,10 @@ $app->get('/animais/stat', function (Request $request, Response $response, array
 
 $app->post('/animais/criar', function (Request $request, Response $response, array $args) {
     $data = $request->getParsedBody();
+    return json_encode($data);
 
-    $nome = $data['nome'] ??'';
 
-    return $response->getBody()->write("Nome do Pet: {$nome}");
+    return $response->getBody()->write("Nome do Pet: {$request->all()}")->withHeader('Access-Control-Allow-Origin', '*');
 });
 
 $app->put('/animais/atualizar', function (Request $request, Response $response, array $args) {

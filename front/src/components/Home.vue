@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <PageTitle icon="fa fa-home" main="Dashboard"
-            sub="Gerenciamento" />
+            sub="Estatísticas" />
             <div class="stats">
             <Stat title="Quantidade de Animais" :value="stat"
                 icon="fa fa-paw" color="#3282cd" />
