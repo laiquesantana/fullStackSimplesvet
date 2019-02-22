@@ -1,70 +1,76 @@
 <template>
+  <div class="card-body table-responsive p-0 col-sm-12">
+    <PageTitle icon="fa fa-paw" main="Catálogo de Animais"></PageTitle>
 
-  <div class="card-body table-responsive p-0">
-            <table class="table table-hover">
-              <tbody>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Raca</th>
-                  <th>Chip</th>
-                  <th>Data de Nascimento</th>
-                  <th>Data de Atualização</th>
-                  <th>Data de Falecimento</th>
-                  <th>Sexo</th>
-                  <th>Especie</th>
-                </tr>
-                <tr v-for="user in users" :key="user.id">
-                  <td>{{user.id}}</td>
-                  <td>{{user.nome | upText}}</td>
-                  <td>{{user.raca_id}}</td>
-                  <td>{{user.chip}}</td>
-                  <td>{{user.data_nascimento| myDate}}</td>
-                  <td>{{user.data_atualizacao| myDate }}</td>
-                  <td>{{user.data_falecimento | myDate}}</td>
-                  <td>{{user.sexo | sexo}}</td>
-                  <td>{{user.especie| especie}}</td>
-              
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+    <div id="container">
+      <Stat
+        class="stats box"
+        v-for="animal in animais"
+        :key="animal.id"
+        icon="fa fa-paw"
+        color="#3282cd"
+        :title="animal.nome"
+        :value="animal.situacao"
+        :sexo="animal.sexo|sexo"
+        :idade="animal.idade"
+        :chip="animal.chip"
+      ></Stat>
+    </div>
+  </div>
 </template>
 
 
 
 <script>
-import axios from "axios"
-
-
+import axios from "axios";
+import { baseApiUrl } from "@/configuracaoGlobal";
+import Stat from "./Stat";
+import PageTitle from "./PageTitle";
 
 export default {
+  components: { PageTitle, Stat },
+  created() {
+    this.getAnimais();
+    toast({
+      type: "success",
+      title: "Lista de animais carregada com sucesso!"
+    });
+  },
 
+  data() {
+    return {
+      titulo: "Catálogo de Animais",
+      animais: {}
+    };
+  },
 
-      created() {
-        
-        this.getAnimais();
-
-    },
-
-    data() {
-      
-        return {
-              titulo: "Catálogo de Animais"  ,
-              users: {}, 
-        }
-    },
-
-    methods: {
-        getAnimais(){
-            var url = "http://localhost:8081/web/public/animais/listar";
-            var vm= this;
-            axios.get(url).then(function(r){
-                vm.users = r.data
-               
-            });
-        }
-    },
-}
+  methods: {
+    getAnimais() {
+      this.$Progress.start();
+      axios
+        .get(`${baseApiUrl}/animais/listar`)
+        .then(res => (this.animais = res.data));
+      this.$Progress.finish();
+    }
+  }
+};
 </script>
+
+
+<style>
+.stats {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 30%;
+}
+#container {
+  width: 100%;
+  border-color: blue;
+  text-align: center;
+}
+
+.box {
+  float: left;
+}
+</style>

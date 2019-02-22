@@ -1,7 +1,7 @@
 <template>
 <div id="app" :class="{'hide-menu': !isMenuVisible }">
   
-    <Cabecalho title= "Catálogo de Animais" :hideToggle="false"></Cabecalho>
+    <Cabecalho :title="titulo"  :hideToggle="false"></Cabecalho>
     <Main></Main>  
     <Conteudo></Conteudo>
     <Rodape></Rodape>
@@ -11,16 +11,24 @@
 </template>
 
 <script>
-import axios from "axios"
+
 
 import {mapState} from 'vuex'
 
 export default {
     name: 'app',
-
+    meta: {
+      progress: {
+        func: [
+          {call: 'color', modifier: 'temp', argument: '#ffb000'},
+          {call: 'fail', modifier: 'temp', argument: '#6e0000'},
+          {call: 'location', modifier: 'temp', argument: 'top'},
+          {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
+        ]
+      }
+    },
     created() {
-        
-        this.getAnimais();
+
 
     },
 
@@ -29,20 +37,12 @@ export default {
     data() {
       
         return {
-              titulo: "Catálogo de Animais"  ,
-              users: {}, 
+            titulo: "Gerenciamento de Animais"  ,
         }
     },
 
     methods: {
-        getAnimais(){
-            var url = "http://localhost:8081/web/public/animais/listar";
-            var vm= this;
-            axios.get(url).then(function(r){
-                vm.users = r.data
-               
-            });
-        }
+   
     },
 }
 </script>

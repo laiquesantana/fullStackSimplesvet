@@ -2,7 +2,7 @@
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-
+use Illuminate\Database\Capsule\Manager as DB;
 $app->get('/la', function (Request $request, Response $response) {
 
     $data = [
@@ -16,14 +16,31 @@ $app->get('/la', function (Request $request, Response $response) {
 
 $app->get('/animais/listar', function (Request $request, Response $response, array $args) {
 
+    $pet = DB::table('listar')->get();
+    return json_encode($pet);
+
     $pet =Animal::all();
    
     return $response->withJson($pet, 200)->withHeader('Access-Control-Allow-Origin', '*');
     //return $this->renderer->render($response, 'index.phtml',  array("pet" => $pet));
-    return json_encode($pet);
 
 
 });
+
+
+$app->get('/animais/stat', function (Request $request, Response $response, array $args) {
+
+    $cout = DB::table('listar')->get()->count();
+    return json_encode($cout);
+
+    $pet =Animal::all();
+   
+    return $response->withJson($pet, 200)->withHeader('Access-Control-Allow-Origin', '*');
+    //return $this->renderer->render($response, 'index.phtml',  array("pet" => $pet));
+
+
+});
+
 
 
 $app->post('/animais/criar', function (Request $request, Response $response, array $args) {
