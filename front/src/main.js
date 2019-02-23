@@ -8,6 +8,7 @@ import vueResource from 'vue-resource'
 import './config/bootstrap'
 import VueProgressBar from 'vue-progressbar'
 import VeeValidate from 'vee-validate';
+import VueTheMask from 'vue-the-mask'
 
 const configValidacao = {
   aria: true,
@@ -39,6 +40,7 @@ window.Swal = Swal;
 
 Vue.use(VueRouter)
 Vue.use(vueResource)
+Vue.use(VueTheMask)
 
 
 const options = {

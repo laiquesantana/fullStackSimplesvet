@@ -44,7 +44,7 @@ $app->get('/raca/listar', function (Request $request, Response $response, array 
 
 $app->get('/animais/stat', function (Request $request, Response $response, array $args) {
 
-    $cout = DB::table('listar')->get()->count();
+    $cout = DB::table('animais')->get()->count();
     return json_encode($cout);
 
     $pet =Animal::all();
