@@ -1,5 +1,16 @@
 # Fullstack 2019
 
+### Instrusções para compilar o projeto
+1º fazer o clone do projeto : https://github.com/laiquesantana/fullStackSimplesvet
+2º acessando a pasta raiz fullStackSimplesvet rodar o composer install
+3º  acessando a pasta fullStackSimplesvet/front rodar o yarn ( yarn install ou yarn ) para instalar as dependências
+4º  acessando a pasta raiz fullStackSimplesvet subir a aplicação para a porta 8080  php -S localhost:8080
+5º  acessando a pasta fullStackSimplesvet/front subir a aplicação para a porta 8081 usando o comando yarn run serve
+6º acessando  o banco de dados mysql usando a sua ferramenta de preferência rodar o script que se encontra na pasta  fullStackSimplesvet/db  com nome selecao_fullstack.sql
+8º fullStackSimplesvet\web\src\settings.php  configurar o banco de dados alterando o password  e username do seu mysql local
+não alterar as demais configurações
+9º Acessar no navegador a aplicação http://localhost:8081/home
+
 ### Escopo do projeto
 
 Monza, é dona de um abrigo de animais e precisa de uma sistema para cadastrar os animais. Hoje o abrigo trabalha com cães e gatos de várias raças e precisa de algo simples que facilite o trabalho de catalogar e exibir os animais para adoção:
