@@ -4,7 +4,7 @@
     
       <AnimalCard v-for="animal in animais " :key="animal.id"
               :nome_animal="animal.nome" :situacao="animal.situacao"
-              :sexo="animal.sexo" :idade="animal.idade" modo="listagem"
+              :sexo="animal.sexo" :idade="animal.idade" modo="listagem" :especie="animal.especie"
               :chip="animal.chip">
 
       </AnimalCard>

@@ -2,10 +2,15 @@
   <v-layout class="stat">
     <v-flex xs12 sm5 offset-sm0>
       <v-card class="cartao">
-        <v-img
+        <v-img     v-if="especie=='1'"
           class="white--text"
           height="200px"
-          src="http://www.spiritanimal.info/pictures/cat/Cat-Spirit-Animal-6.jpg"
+        src="https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/08/american-eskimo-dog-card-large.jpg?bust=1535567311"
+        />
+        <v-img  v-else
+          class="white--text"
+          height="200px"
+        src="http://www.spiritanimal.info/pictures/cat/Cat-Spirit-Animal-6.jpg"
         >
           <v-container fill-height fluid>
             <v-layout fill-height>
@@ -44,7 +49,7 @@
 <script>
 export default {
   name: "AnimalCard",
-  props: ["nome_animal", "situacao", "sexo", "idade", "chip", 'modo'],
+  props: ["nome_animal", "situacao", "sexo", "idade", "chip", 'modo','especie'],
   components: {},
   created() {},
 

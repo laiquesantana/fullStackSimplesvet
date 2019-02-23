@@ -145,6 +145,8 @@ export default {
       raca: [],
       fields: [
         { key: "id", label: "Código", sortable: true },
+        { key: "especie", label: "Espécie", sortable: true,
+          formatter: value => (value == "1" ? "CACHORRO" : "GATO") },
         {
           key: "nome",
           label: "Nome",

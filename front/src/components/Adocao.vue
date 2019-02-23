@@ -5,7 +5,7 @@
       <AnimalCard v-for="animal in animais " :key="animal.id"
                v-show="animal.situacao =='vivo'" modo="adocao"
               :nome_animal="animal.nome" :situacao="animal.situacao"
-              :sexo="animal.sexo" :idade="animal.idade"
+              :sexo="animal.sexo" :idade="animal.idade" :especie="animal.especie"
               :chip="animal.chip">
 
       </AnimalCard>
