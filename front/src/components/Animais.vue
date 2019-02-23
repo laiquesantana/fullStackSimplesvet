@@ -31,10 +31,9 @@ export default {
   components: { PageTitle, Stat },
   created() {
     this.getAnimais();
-    toast({
-      type: "success",
-      title: "Lista de animais carregada com sucesso!"
-    });
+        this.$toasted.global.defaultSuccess({
+            msg : 'Cards com os animais carregado com sucesso!'
+        });
   },
 
   data() {

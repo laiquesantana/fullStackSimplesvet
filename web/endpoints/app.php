@@ -59,14 +59,24 @@ $app->get('/animais/stat', function (Request $request, Response $response, array
 
 $app->post('/animais/criar', function (Request $request, Response $response, array $args) {
     $data = $request->getParsedBody();
-    return json_encode($data);
+   
+    $result = $this->db->connection()->statement("CALL criar(:param1, :param2,:param3,:param4,:param5,:param6,:param7,:param8
+    );", array(':param1' => $data['nome'], ':param2' => $data['raca_id'], ':param3' => $data['chip'], ':param4' => $data['data_nascimento'], 
+    ':param5' => null, ':param6' => $data['data_falecimento']
+    , ':param7' => $data['sexo'], ':param8' => $data['especie']));
+    return $response->withJson($result);
+ 
 
-
-    return $response->getBody()->write("Nome do Pet: {$request->all()}")->withHeader('Access-Control-Allow-Origin', '*');
 });
 
 $app->put('/animais/atualizar', function (Request $request, Response $response, array $args) {
-    return $response->getBody()->write("Nome do Pet: " . $args['name']);
+    $data = $request->getParsedBody();
+    
+    $result = $this->db->connection()->statement("CALL atualizar(:param1, :param2,:param3,:param4,:param5,:param6,:param7,:param8,:param9
+    );", array(':param1' => $data['id'],':param2' => $data['nome'], ':param3' => $data['raca_id'], ':param4' => $data['chip'], ':param5' => $data['data_nascimento'], 
+    ':param6' =>  date('Y-m-d H:i'), ':param7' => $data['data_falecimento'],
+    ':param8' => $data['sexo'], ':param9' => $data['especie']));
+    return $response->withJson($result, 200);
 });
 
 

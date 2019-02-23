@@ -7,6 +7,25 @@ import './mensagens'
 import vueResource from 'vue-resource'
 import './config/bootstrap'
 import VueProgressBar from 'vue-progressbar'
+import VeeValidate from 'vee-validate';
+
+const configValidacao = {
+  aria: true,
+  classNames: {},
+  classes: false,
+  delay: 0,
+  dictionary: null,
+  errorBagName: 'errors', // change if property conflicts
+  events: 'input|blur',
+  fieldsBagName: 'fieldsValid',
+  i18n: null, // the vue-i18n plugin instance
+  i18nRootKey: 'validations', // the nested key under which the validation messages will be located
+  inject: true,
+  locale: 'en',
+  validity: false
+};
+
+Vue.use(VeeValidate, configValidacao);
 
 Vue.config.productionTip = false
 
@@ -20,6 +39,7 @@ window.Swal = Swal;
 
 Vue.use(VueRouter)
 Vue.use(vueResource)
+
 
 const options = {
   color: '#bffaf3',
