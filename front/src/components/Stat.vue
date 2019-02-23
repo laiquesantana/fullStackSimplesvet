@@ -1,14 +1,14 @@
 <template>
   <div class="stat">
+    <div class="stat-image d-none d-sm-blcok">
+        <img src="@/assets/logo.png"  alt="animal">
+    </div>
     <div class="stat-icon">
       <i :class="icon" :style="style"></i>
     </div>
     <div class="stat-info">
-      <span class="stat-title"> {{ title }}</span>
-     <span class="stat-value">{{ value }}</span>
-        <!--<span class="stat-title">Sexo: {{ sexo }}</span>
-      <span class="stat-title">Idade: {{ idade }}</span>
-    <span class="stat-title">Nº Chip: {{ chip }}</span>  --> 
+      <span class="stat-title">{{ title }}</span>
+      <span class="stat-value">{{ value }}</span>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
 </script>
 
 <style>
+
 .stat {
   flex: 1;
   display: flex;
@@ -36,6 +37,7 @@ export default {
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  
 }
 .stat-icon {
   display: flex;

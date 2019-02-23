@@ -37,7 +37,7 @@
         </b-col>
         <b-col md="3" sm="12">
           <b-form-group label="Número do chip:" label-for="animais-chip">
-            <b-form-input v-mask="'##########'"
+            <b-form-input v-mask="'######'"
               name="Numero do chip"
               id="animais-chip"
               type="text"
@@ -68,7 +68,7 @@
       <b-row>
         <b-col md="3" sm="12">
           <b-form-group label="Raça:" label-for="animais-raca_id">
-            <b-form-select v-model="animais.raca_id">
+            <b-form-select  name="Raça"  id="raca-id" v-model="animais.raca_id">
               <option
                 v-for="ra in raca"
                 :disabled="ra.situacao =='INA'"
@@ -207,11 +207,11 @@ export default {
   methods: {
       exibirIdade(idadeEmDias){
           if(idadeEmDias >365){
-              return Math.floor(idadeEmDias/365) +" Ano";  
+              return Math.floor(idadeEmDias/365) +" Ano(s)";  
           }else if(idadeEmDias > 30){
-                return Math.floor(idadeEmDias/30) +" Meses";
+                return Math.floor(idadeEmDias/30) +" Mes(es)";
           }else{
-              return idadeEmDias +" Dias";
+              return idadeEmDias +" Dia(s)";
           }
       },
     loadAnimais() {
@@ -274,6 +274,7 @@ export default {
     loadAnimalModo(animais, mode = "atualizar") {
       this.mode = mode;
       this.animais = { ...animais };
+  
     }
   },
   watch: {},

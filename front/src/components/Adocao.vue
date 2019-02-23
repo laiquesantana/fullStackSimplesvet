@@ -1,10 +1,11 @@
 <template>
   <div id="container " >
-    <PageTitle icon="fa fa-paw" main="Catálogo de Animais" sub="Listagens de Animais"></PageTitle>
+    <PageTitle icon="fa fa-paw" main="Animais para adoção" sub="Animais disponiveis para Adoção"></PageTitle>
     
       <AnimalCard v-for="animal in animais " :key="animal.id"
+               v-show="animal.situacao =='vivo'" modo="adocao"
               :nome_animal="animal.nome" :situacao="animal.situacao"
-              :sexo="animal.sexo" :idade="animal.idade" modo="listagem"
+              :sexo="animal.sexo" :idade="animal.idade"
               :chip="animal.chip">
 
       </AnimalCard>
@@ -25,7 +26,7 @@ export default {
   created() {
     this.getAnimais();
     this.$toasted.global.defaultSuccess({
-      msg: "Cards com os animais carregado com sucesso!"
+      msg: "Cards com os animais para adoção carregado com sucesso!"
     });
   },
 
