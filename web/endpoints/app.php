@@ -93,10 +93,10 @@ $app->put('/racas/atualizar', function (Request $request, Response $response, ar
 
 $app->put('/animais/atualizar', function (Request $request, Response $response, array $args) {
     $data = $request->getParsedBody();
-    
+  
     $result = $this->db->connection()->statement("CALL atualizar(:param1, :param2,:param3,:param4,:param5,:param6,:param7,:param8,:param9
-    );", array(':param1' => $data['id'],':param2' => $data['nome'], ':param3' => $data['raca_id'], ':param4' => $data['chip'], ':param5' => $data['data_nascimento'], 
-    ':param6' =>  date('Y-m-d H:i'), ':param7' => $data['data_falecimento'],
+    );", array(':param1' => $data['id'],':param2' => $data['nome'], ':param3' => $data['raca_id'], ':param4' => $data['chip'], ':param5' => $data['data_nascimento']== "" ? null : $data['data_nascimento'], 
+    ':param6' =>  date('Y-m-d H:i'), ':param7' => $data['data_falecimento'] == "" ? null :$data['data_falecimento']  ,
     ':param8' => $data['sexo'], ':param9' => $data['especie']));
     return $response->withJson($result, 200);
 });
