@@ -91,21 +91,16 @@ export default {
     };
   },
   methods: {
-    loadAnimais() {
-      axios
-        .get(`${baseApiUrl}/animais/listar`)
-        .then(res => (this.animal = res.data));
-    },
+  
     reset() {
       this.mode = "save";
-      this.animais = {};
-      this.loadAnimais();
+      this.racas = {};
       this.loadRacas();
     },
     save() {
       this.$validator.validateAll().then(result => {
         if (result) {
-          axios[method](`${baseApiUrl}/racas/criar${id}`, this.animais)
+          axios[method](`${baseApiUrl}/racas/criar${id}`, this.racas)
             .then(() => {
               this.$toasted.global.defaultSuccess({
                 msg: "Raca cadastrada com sucesso!"
@@ -119,14 +114,14 @@ export default {
           msg: "Você possui problemas no formulário"
         });
       });
-      const method = this.animais.id ? "put" : "post";
-      const id = this.animais.id ? `/${this.animais.id}` : "";
+      const method = this.racas.id ? "put" : "post";
+      const id = this.racas.id ? `/${this.racas.id}` : "";
     },
     atualizar() {
       this.$validator.validateAll().then(result => {
         if (result) {
           axios
-            .put(`${baseApiUrl}/racas/atualizar`, this.animais, {
+            .put(`${baseApiUrl}/racas/atualizar`, this.racas, {
               useCredentails: true
             })
             .then(() => {
@@ -148,7 +143,7 @@ export default {
         .get(`${baseApiUrl}/raca/listar`)
         .then(res => (this.raca = res.data));
     },
-    loadCategories() {},
+
     loadAnimalModo(racas, mode = "atualizar") {
       this.mode = mode;
       this.racas = { ...racas };
@@ -156,11 +151,7 @@ export default {
   },
   watch: {},
   mounted() {
-    this.loadAnimais();
     this.loadRacas();
-    this.$toasted.global.defaultSuccess({
-      msg: "Página Carregada com sucesso!"
-    });
   }
 };
 </script>

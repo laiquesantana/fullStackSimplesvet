@@ -37,7 +37,7 @@
         </b-col>
         <b-col md="3" sm="12">
           <b-form-group label="Número do chip:" label-for="animais-chip">
-            <b-form-input v-mask="'###########'"
+            <b-form-input v-mask="'##########'"
               name="Numero do chip"
               id="animais-chip"
               type="text"
@@ -157,7 +157,8 @@ export default {
           sortable: true,
           formatter: value => value.toUpperCase()
         },
-        { key: "idade", label: "Idade", sortable: true },
+        { key: "idade", label: "Idade", sortable: true,
+        formatter: value => this.exibirIdade(value)},
         {
           key: "sexo",
           label: "Sexo",
@@ -204,6 +205,15 @@ export default {
     };
   },
   methods: {
+      exibirIdade(idadeEmDias){
+          if(idadeEmDias >365){
+              return Math.floor(idadeEmDias/365) +" Ano";  
+          }else if(idadeEmDias > 30){
+                return Math.floor(idadeEmDias/30) +" Meses";
+          }else{
+              return idadeEmDias +" Dias";
+          }
+      },
     loadAnimais() {
       axios
         .get(`${baseApiUrl}/animais/listar`)
@@ -261,7 +271,6 @@ export default {
         .get(`${baseApiUrl}/raca/listar`)
         .then(res => (this.raca = res.data));
     },
-    loadCategories() {},
     loadAnimalModo(animais, mode = "atualizar") {
       this.mode = mode;
       this.animais = { ...animais };

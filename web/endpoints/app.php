@@ -69,6 +69,28 @@ $app->post('/animais/criar', function (Request $request, Response $response, arr
 
 });
 
+$app->post('/racas/criar', function (Request $request, Response $response, array $args) {
+    $data = $request->getParsedBody();
+   
+    $result = $this->db->connection()->statement("CALL criar_racas(:param1, :param2);", 
+    array(':param1' => $data['nome'], ':param2' => $data['situacao']));
+    return $response->withJson($result);
+ 
+
+});
+
+$app->put('/racas/atualizar', function (Request $request, Response $response, array $args) {
+    $data = $request->getParsedBody();
+   
+    $result = $this->db->connection()->statement("CALL atualicar_racas(:param1, :param2,:param3 );", 
+    array(':param1' => $data['nome'], ':param2' => $data['id'],':param3' => $data['situacao']));
+    return $response->withJson($result);
+ 
+
+});
+
+
+
 $app->put('/animais/atualizar', function (Request $request, Response $response, array $args) {
     $data = $request->getParsedBody();
     
