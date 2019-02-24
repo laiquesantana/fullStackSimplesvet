@@ -1,47 +1,50 @@
 <template>
-  <v-layout  class="stat" >
-    <v-flex xs12 sm5 offset-sm0  >
-      <v-card  :class="cartao_esmaecido">
-         <v-container
-            fluid
-            grid-list-md
-          >
-        <v-img 
-          class="white--text"
-          height="200px"
-          :src="backgroud"
-        >
-        
-            <v-layout  row wrap>
-              <v-flex xs12 align-end flexbox>
-                <h1>
-                  <span class="headline">{{nome_animal.toUpperCase()}}</span>
-                </h1>
-              </v-flex>
-            </v-layout>
+  <div>
+    <v-layout class="stat">
+      <v-flex xs12 sm5 offset-sm0>
+        <v-card :class="cartao_esmaecido">
+          <v-container fluid grid-list-md>
+            <v-img class="white--text" height="200px" :src="backgroud">
+              <v-layout row wrap>
+                <v-flex xs12 align-end flexbox>
+                  <h1>
+                    <span class="headline">{{nome_animal.toUpperCase()}}</span>
+                  </h1>
+                </v-flex>
+              </v-layout>
+            </v-img>
+            <v-card-title>
+              <div>
+                <h3>
+                  <span
+                    v-show="modo!='adocao'"
+                    class="black--text"
+                  >Situação: {{situacao.toUpperCase()}}</span>
+                  <br>
+                </h3>
+                <h5>
+                  <span class="black--text">>Sexo: {{sexo|sexo}}</span>
+                </h5>
+                <br>
+                <h5>
+                  <span class="black--text">>Idade: {{idade|retornaIdade}}</span>
+                </h5>
+                <br>
+                <h5>
+                  <span v-show="modo!='adocao'" class="black--text">>Nº Chip: {{chip}}</span>
+                </h5>
+                <br>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+            <EditModal :id="id"></EditModal>
+            </v-card-actions>
+          </v-container>
+        </v-card>
+      </v-flex>
+    </v-layout>
     
-        </v-img>
-        <v-card-title>
-          <div>
-            <h3>
-              <span v-show="modo!='adocao'" class="black--text">Situação: {{situacao.toUpperCase()}}</span>
-              <br>
-            </h3>
-            <h5><span class="black--text">>Sexo: {{sexo|sexo}}</span></h5>
-            <br>
-            <h5><span class="black--text">>Idade: {{idade|retornaIdade}}</span></h5>
-            <br>
-           <h5> <span v-show="modo!='adocao'" class="black--text">>Nº Chip: {{chip}}</span></h5>
-            <br>
-          </div>
-        </v-card-title>
-        <v-card-actions>
-          <v-btn flat color="orange">Editar</v-btn>
-        </v-card-actions>
-         </v-container>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  </div>
 </template>
 
 
@@ -49,27 +52,39 @@
 <script>
 import axios from "axios";
 import { baseApiUrl } from "@/configuracaoGlobal";
+import EditModal from "./EditModal";
 export default {
   name: "AnimalCard",
-  props: ["nome_animal", "situacao", "sexo", "idade", "chip", 'modo','especie'],
-  components: {},
+  props: [
+    "nome_animal",
+    "situacao",
+    "sexo",
+    "idade",
+    "chip",
+    "modo",
+    "especie",
+    "id"
+  ],
+  components: {EditModal},
   created() {},
 
   data() {
     return {
       titulo: "Catálogo de Animais",
       animais: {},
-      cartao_esmaecido: this.situacao=='morto' ? "cartao opacidade": "cartao" ,
-      backgroud: this.especie == 1 ? "https://www.hearingdogs.org.uk/globalassets/2.-home-page/start-page/sponsor-hearing-dog-puppy-hebe-977-x-550.jpg" : "http://www.spiritanimal.info/pictures/cat/Cat-Spirit-Animal-6.jpg"
+      cartao_esmaecido: this.situacao == "morto" ? "cartao opacidade" : "cartao",
+      backgroud: this.especie == 1
+          ? "https://www.hearingdogs.org.uk/globalassets/2.-home-page/start-page/sponsor-hearing-dog-puppy-hebe-977-x-550.jpg"
+          : "http://www.spiritanimal.info/pictures/cat/Cat-Spirit-Animal-6.jpg"
     };
   },
 
   methods: {
-     getAnimais() {
+    getAnimais() {
       axios
         .get(`${baseApiUrl}/animais/listar`)
         .then(res => (this.animais = res.data));
-    }
+    },
   }
 };
 </script>
@@ -89,53 +104,13 @@ export default {
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-
-  
 }
 
-@keyframes fadein {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+.opacidade {
+  opacity: 0.5;
 }
-@-moz-keyframes fadein { /* Firefox */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-webkit-keyframes fadein { /* Safari and Chrome */
-    10%{
-        -webkit-filter: grayscale(10%);
-        -moz-filter: grayscale(10%);
-        -ms-filter: grayscale(10%);
-        -o-filter: grayscale(10%);
-        filter: grayscale(10%);
-        }    
-}
-@-o-keyframes fadein { /* Opera */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.opacidade{
-   opacity : 0.5
-}
-.cartao{
+.cartao {
   width: 700px;
-   background:#ccc;
-
+  background: #ccc;
 }
-
-
-
 </style>

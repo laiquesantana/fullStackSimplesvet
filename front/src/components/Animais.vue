@@ -13,6 +13,7 @@
             modo="listagem"
             :especie="animal.especie"
             :chip="animal.chip"
+            :id="animal.id"
           ></AnimalCard>
         </b-col>
       </b-row>

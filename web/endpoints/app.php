@@ -19,7 +19,7 @@ $app->get('/animais/listar', function (Request $request, Response $response, arr
     $pet = DB::table('listar')->get();
     return json_encode($pet);
 
-    $pet =Animal::all();
+
    
     return $response->withJson($pet, 200)->withHeader('Access-Control-Allow-Origin', '*');
     //return $this->renderer->render($response, 'index.phtml',  array("pet" => $pet));
@@ -28,12 +28,21 @@ $app->get('/animais/listar', function (Request $request, Response $response, arr
 });
 
 
+
+$app->get('/animais/getAnimalId/{id}', function (Request $request, Response $response, array $args) {
+    $pet =Animal::find($args['id']);
+    return json_encode($pet);
+
+    //return $this->renderer->render($response, 'index.phtml',  array("pet" => $pet));
+
+});
+
+
+
 $app->get('/raca/listar', function (Request $request, Response $response, array $args) {
 
     $pet = DB::table('racas')->get();
     return json_encode($pet);
-
-    $pet =Animal::all();
    
     return $response->withJson($pet, 200)->withHeader('Access-Control-Allow-Origin', '*');
     //return $this->renderer->render($response, 'index.phtml',  array("pet" => $pet));
