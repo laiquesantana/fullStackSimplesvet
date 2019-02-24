@@ -1,7 +1,7 @@
 <template>
   <v-layout  class="stat" >
     <v-flex xs12 sm5 offset-sm0  >
-      <v-card class="cartao">
+      <v-card  :class="cartao_esmaecido">
          <v-container
             fluid
             grid-list-md
@@ -59,6 +59,7 @@ export default {
     return {
       titulo: "Catálogo de Animais",
       animais: {},
+      cartao_esmaecido: this.situacao=='morto' ? "cartao opacidade": "cartao" ,
       backgroud: this.especie == 1 ? "https://www.hearingdogs.org.uk/globalassets/2.-home-page/start-page/sponsor-hearing-dog-puppy-hebe-977-x-550.jpg" : "http://www.spiritanimal.info/pictures/cat/Cat-Spirit-Animal-6.jpg"
     };
   },
@@ -88,10 +89,53 @@ export default {
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+
+  
 }
 
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    10%{
+        -webkit-filter: grayscale(10%);
+        -moz-filter: grayscale(10%);
+        -ms-filter: grayscale(10%);
+        -o-filter: grayscale(10%);
+        filter: grayscale(10%);
+        }    
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.opacidade{
+   opacity : 0.5
+}
 .cartao{
   width: 700px;
+   background:#ccc;
+
 }
+
+
 
 </style>
