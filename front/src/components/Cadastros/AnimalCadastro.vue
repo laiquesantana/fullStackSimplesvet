@@ -145,56 +145,38 @@ export default {
       raca: [],
       fields: [
         { key: "id", label: "Código", sortable: true },
+        
+        { key: "nome", label: "Nome",  sortable: true,
+          formatter: value => value.toUpperCase()
+        },
+
         { key: "especie", label: "Espécie", sortable: true,
           formatter: value => (value == "1" ? "CACHORRO" : "GATO") },
-        {
-          key: "nome",
-          label: "Nome",
-          sortable: true,
+
+        { key: "nome_raca", label: "Raça", sortable: true,
           formatter: value => value.toUpperCase()
         },
-        {
-          key: "nome_raca",
-          label: "Raça",
-          sortable: true,
-          formatter: value => value.toUpperCase()
-        },
+
         { key: "idade", label: "Idade", sortable: true,
         formatter: value => this.exibirIdade(value)},
-        {
-          key: "sexo",
-          label: "Sexo",
-          sortable: true,
+
+        { key: "sexo", label: "Sexo", ortable: true,
           formatter: value => (value == "M" ? "MACHO" : "FÊMEA")
         },
+
         { key: "chip", label: "Numero do Chip", sortable: true },
-        {
-          key: "data_nascimento",
-          label: "Data de Nascimento",
-          sortable: true,
-          formatter: value =>
-            value ? moment(String(value)).format("DD/MM/YYYY ") : "Não Consta"
+
+        {  key: "data_nascimento",label: "Data de Nascimento",  sortable: true,
+          formatter: value =>value ? moment(String(value)).format("DD/MM/YYYY ") : "Não Consta" },
+
+        { key: "data_atualizacao", label: "Data de Atualização", sortable: true,
+          formatter: value => value? moment(String(value)).format("DD/MM/YYYY hh:mm"): "Não Consta"
         },
-        {
-          key: "data_atualizacao",
-          label: "Data de Atualização",
-          sortable: true,
-          formatter: value =>
-            value
-              ? moment(String(value)).format("DD/MM/YYYY hh:mm")
-              : "Não Consta"
+
+        {    key: "data_falecimento", label: "Data de Falecimento", sortable: true,
+          formatter: value => value ? moment(String(value)).format("DD/MM/YYYY ") : "Não Consta"
         },
-        {
-          key: "data_falecimento",
-          label: "Data de Falecimento",
-          sortable: true,
-          formatter: value =>
-            value ? moment(String(value)).format("DD/MM/YYYY ") : "Não Consta"
-        },
-        {
-          key: "situacao",
-          label: "Situação",
-          sortable: true,
+        { key: "situacao",  label: "Situação", sortable: true,
           formatter: value => value.toUpperCase()
         },
         { key: "actions", label: "Ações" }

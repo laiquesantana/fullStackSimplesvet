@@ -1,14 +1,22 @@
 <template>
-  <div id="container " >
+  <div id="container ">
     <PageTitle icon="fa fa-paw" main="Catálogo de Animais" sub="Listagens de Animais"></PageTitle>
-    
-      <AnimalCard v-for="animal in animais " :key="animal.id"
-              :nome_animal="animal.nome" :situacao="animal.situacao"
-              :sexo="animal.sexo" :idade="animal.idade" modo="listagem" :especie="animal.especie"
-              :chip="animal.chip">
-
-      </AnimalCard>
-
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col cols="6" v-for="animal in animais" :key="animal.id">
+          <AnimalCard
+            :key="animal.id"
+            :nome_animal="animal.nome"
+            :situacao="animal.situacao"
+            :sexo="animal.sexo"
+            :idade="animal.idade"
+            modo="listagem"
+            :especie="animal.especie"
+            :chip="animal.chip"
+          ></AnimalCard>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -33,7 +41,7 @@ export default {
     return {
       titulo: "Catálogo de Animais",
       animais: {},
-      loadmore:true
+      loadmore: true
     };
   },
 
@@ -49,5 +57,4 @@ export default {
 
 
 <style>
-
 </style>

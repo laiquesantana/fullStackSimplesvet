@@ -1,21 +1,25 @@
 <template>
-  <v-layout class="stat">
-    <v-flex xs12 sm5 offset-sm0>
+  <v-layout  class="stat" >
+    <v-flex xs12 sm5 offset-sm0  >
       <v-card class="cartao">
+         <v-container
+            fluid
+            grid-list-md
+          >
         <v-img 
           class="white--text"
           height="200px"
           :src="backgroud"
         >
-          <v-container fill-height fluid>
-            <v-layout fill-height>
+        
+            <v-layout  row wrap>
               <v-flex xs12 align-end flexbox>
                 <h1>
                   <span class="headline">{{nome_animal.toUpperCase()}}</span>
                 </h1>
               </v-flex>
             </v-layout>
-          </v-container>
+    
         </v-img>
         <v-card-title>
           <div>
@@ -23,17 +27,18 @@
               <span v-show="modo!='adocao'" class="black--text">Situação: {{situacao.toUpperCase()}}</span>
               <br>
             </h3>
-            <span class="black--text">>Sexo: {{sexo|sexo}}</span>
+            <h5><span class="black--text">>Sexo: {{sexo|sexo}}</span></h5>
             <br>
-            <span class="black--text">>Idade: {{idade|retornaIdade}}</span>
+            <h5><span class="black--text">>Idade: {{idade|retornaIdade}}</span></h5>
             <br>
-            <span v-show="modo!='adocao'" class="black--text">>Nº Chip: {{chip}}</span>
+           <h5> <span v-show="modo!='adocao'" class="black--text">>Nº Chip: {{chip}}</span></h5>
             <br>
           </div>
         </v-card-title>
         <v-card-actions>
           <v-btn flat color="orange">Editar</v-btn>
         </v-card-actions>
+         </v-container>
       </v-card>
     </v-flex>
   </v-layout>
@@ -42,6 +47,8 @@
 
 
 <script>
+import axios from "axios";
+import { baseApiUrl } from "@/configuracaoGlobal";
 export default {
   name: "AnimalCard",
   props: ["nome_animal", "situacao", "sexo", "idade", "chip", 'modo','especie'],
@@ -56,7 +63,13 @@ export default {
     };
   },
 
-  methods: {}
+  methods: {
+     getAnimais() {
+      axios
+        .get(`${baseApiUrl}/animais/listar`)
+        .then(res => (this.animais = res.data));
+    }
+  }
 };
 </script>
 
@@ -76,4 +89,9 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
+
+.cartao{
+  width: 700px;
+}
+
 </style>
