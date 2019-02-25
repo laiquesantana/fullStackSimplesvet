@@ -37,18 +37,16 @@
                 <br>
               </div>
             </v-card-title>
-           
-             
    
           </v-container>
         </v-card>
          <v-card-actions>
          <EditModal
-          v-on:update:animal="ani= $event"
-          v-if="modo!= 'adocao'"
-          :id="animal_obj.id"
-        ></EditModal>
-                 </v-card-actions>
+            v-on:update:animal="ani= $event"
+            v-if="modo!= 'adocao'"
+            :id="animal_obj.id"
+          > </EditModal>
+        </v-card-actions>
       </v-flex>
     </v-layout>
   </div>
@@ -159,4 +157,5 @@ export default {
   width: 700px;
   background: #ccc;
 }
+
 </style>

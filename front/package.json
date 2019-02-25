@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
   },
   "dependencies": {
     "admin-lte": "^3.0.0-alpha.2",
@@ -39,7 +39,8 @@
     "eslint-plugin-vue": "5.2.2",
     "jquery": "^3.2",
     "lodash": "^4.17.5",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "vue-test-utils": "^1.0.0-beta.11"
   },
   "eslintConfig": {
     "root": true,
