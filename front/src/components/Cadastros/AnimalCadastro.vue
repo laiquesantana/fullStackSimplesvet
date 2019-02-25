@@ -68,16 +68,17 @@
       <b-row>
         <b-col md="3" sm="12">
           <b-form-group label="Raça:" label-for="animais-raca_id">
-            <b-form-select  name="Raça"  id="raca-id" v-model="animais.raca_id">
+            <b-form-select v-validate="'required'" name="raca"  id="raca-id" v-model="animais.raca_id">
               <option
                 v-for="ra in raca"
                 :disabled="ra.situacao =='INA'"
+    
                 :value="ra.id"
                 :key="ra.id"
               >{{ ra.nome }}</option>
             </b-form-select>
-            <i v-show="errors.has('Raça')" class="fa fa-warning"></i>
-            <span v-show="errors.has('Raça')" class="help is-danger">{{ errors.first('Raça') }}</span>
+            <i v-show="errors.has('raca')" class="fa fa-warning"></i>
+            <span v-show="errors.has('raca')" class="help is-danger">{{ errors.first('raca') }}</span>
           </b-form-group>
         </b-col>
         <b-col md="3" sm="12">

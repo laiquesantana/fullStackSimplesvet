@@ -7,14 +7,9 @@
         <b-col v-show="animal.situacao =='vivo'"  cols="6" v-for="animal in animais" :key="animal.id">
           <AnimalCard
             :key="animal.id"
-          
-            :nome_animal="animal.nome"
-            :situacao="animal.situacao"
-            :sexo="animal.sexo"
-            :idade="animal.idade"
+            :animal_obj="animal"
             modo="adocao"
-            :especie="animal.especie"
-            :chip="animal.chip"
+
           ></AnimalCard>
         </b-col>
       </b-row>

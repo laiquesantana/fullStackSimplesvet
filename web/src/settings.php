@@ -18,7 +18,7 @@ return [
             'host' => 'localhost',
             'database' => 'selecao_fullstack',
             'username' => 'root',
-            'password' => '',
+            'password' => 'root',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
