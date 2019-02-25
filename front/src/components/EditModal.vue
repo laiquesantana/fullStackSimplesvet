@@ -2,7 +2,7 @@
   <div>
     <b-button color="orange" @click="showModal">Editar</b-button>
     <input :id="id" type="hidden" v-model="animais.id">
-    <b-modal size="lg" ref="myModalRef" hide-footer title="Atualizar Dados do Animal">
+    <b-modal class="teste" size="lg" ref="myModalRef" hide-footer title="Atualizar Dados do Animal">
       <b-form>
         <input id="animais-id" type="hidden" v-model="animais.id">
         <b-row>
@@ -67,7 +67,6 @@
           </b-form-group>
         </b-col>
       </b-row>
-
       <b-row>
         <b-col md="3" sm="12">
           <b-form-group label="Raça:" label-for="animais-raca_id">
@@ -117,7 +116,7 @@
         </b-row>
         <b-col xs="12">
           <b-button variant="success" @click="atualizar">Atualizar</b-button>
-          <b-button class="ml-2" >Cancelar</b-button>
+          <b-button class="ml-2" @click="hideModal()">Cancelar</b-button>
         </b-col>
       </b-form>
     </b-modal>
@@ -161,6 +160,11 @@ export default {
     hideModal() {
       this.$refs.myModalRef.hide();
     },
+    getAnimais() {
+      axios
+        .get(`${baseApiUrl}/animais/listar`)
+        .then(res => (this.animais = res.data));
+    },
     atualizar() {
       this.$validator.validateAll().then(result => {
         if (result) {
@@ -172,7 +176,10 @@ export default {
               this.$toasted.global.defaultSuccess({
                 msg: "Animal Atualizado com sucesso!"
               });
-               this.hideModal()
+              
+               this.$emit('update:animal', this.animais)
+             
+                this.hideModal()
             })
             .catch(showError);
           return;
@@ -185,4 +192,10 @@ export default {
   }
 };
 </script>
-The hide() method
+
+
+<style>
+.opacidade {
+  opacity: 0.5;
+}
+</style>

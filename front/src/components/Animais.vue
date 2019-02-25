@@ -5,6 +5,8 @@
       <b-row>
         <b-col cols="6" v-for="animal in animais" :key="animal.id">
           <AnimalCard
+            :v-model="animais"
+            :animal_obj="animal"
             :key="animal.id"
             :nome_animal="animal.nome"
             :situacao="animal.situacao"
@@ -45,6 +47,7 @@ export default {
       loadmore: true
     };
   },
+  
 
   methods: {
     getAnimais() {
