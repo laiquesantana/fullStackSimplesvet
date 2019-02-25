@@ -2,7 +2,7 @@
 
 ### Instrusções para compilar o projeto
 * 1º fazer o clone do projeto : https://github.com/laiquesantana/fullStackSimplesvet
-* 2º acessando a pasta raiz fullStackSimplesvet/web rodar o composer install
+* 2º acessando a pasta  fullStackSimplesvet/web rodar o composer install
 * 3º  acessando a pasta fullStackSimplesvet/front rodar o yarn ( yarn install ou yarn ) para instalar as dependências
 * 4º  acessando a pasta raiz fullStackSimplesvet subir a aplicação para a porta 8080  php -S localhost:8080 
 * 5º  acessando a pasta fullStackSimplesvet/front subir a aplicação para a porta 8081 usando o comando yarn run serve
