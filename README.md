@@ -1,6 +1,6 @@
 # Fullstack 2019
 
-### Instrusções para compilar o projeto
+### Instruções para compilar o projeto
 * 1º fazer o clone do projeto : https://github.com/laiquesantana/fullStackSimplesvet
 * 2º acessando a pasta  fullStackSimplesvet/web rodar o composer install
 * 3º  acessando a pasta fullStackSimplesvet/front rodar o yarn ( yarn install ou yarn ) para instalar as dependências
